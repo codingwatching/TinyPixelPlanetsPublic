@@ -16,11 +16,11 @@ func load_system():
 		child.queue_free()
 	for child in $stars.get_children():
 		child.hide()
-	yield(get_tree(),"idle_frame")
+	await get_tree().process_frame
 	$stars.get_node(StarSystem.currentStar).show()
 	var planets = StarSystem.get_system_bodies()
 	for planet in planets:
-		var planetObj = PLANET.instance()
+		var planetObj = PLANET.instantiate()
 		planetObj.planetRef = planet
 		$system.add_child(planetObj)
 	emit_signal("system_loaded")
@@ -29,6 +29,6 @@ func load_system():
 func planet_entered(planet : Object) -> void:
 	$ship.canMove = false
 	$CanvasLayer/Black/AnimationPlayer.play("fadeIn")
-	yield($CanvasLayer/Black/AnimationPlayer,"animation_finished")
+	await $CanvasLayer/Black/AnimationPlayer.animation_finished
 	print("Landed")
 	StarSystem.land(planet.planetRef.id)

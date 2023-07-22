@@ -2,8 +2,8 @@ extends Control
 
 const CRAFT_BTN = preload("res://assets/CraftBtn.tscn")
 
-onready var inventory = get_node("../Inventory")
-onready var ITEM_PER_PAGE = inventory.ITEM_PER_PAGE
+@onready var inventory = get_node("../Inventory")
+@onready var ITEM_PER_PAGE = inventory.ITEM_PER_PAGE
 
 var recipes = {
 	"inventory": [
@@ -90,8 +90,8 @@ func update_crafting(menu = "null") -> void:
 					page.name = str(recipeID / ITEM_PER_PAGE)
 					$recipes.add_child(page)
 				loc = 0
-			var item = CRAFT_BTN.instance()
-			item.rect_position.y = loc * 18
+			var item = CRAFT_BTN.instantiate()
+			item.position.y = loc * 18
 			item.loc = recipeID
 			loc += 1
 			$recipes.get_node(str(int(recipeID / ITEM_PER_PAGE))).add_child(item)
@@ -102,7 +102,7 @@ func get_available_recipes(menu : String) -> Array:
 	var availableRecipes = []
 	for recipe in recipes[menu]:
 		for id in get_recipe_ids(recipe["recipe"]):
-			if !inventory.find_item(id).empty():
+			if !inventory.find_item(id).is_empty():
 				availableRecipes.append(recipe)
 				break
 	return availableRecipes
@@ -122,7 +122,7 @@ func recipe_clicked(recipeRef : Dictionary):
 	if recipesSelect["recipe"].size() > 1:
 		recipe2 = recipesSelect["recipe"][1]
 		item2 = inventory.find_item(recipe2["id"])
-	if !item1.empty() and item1["amount"] >= recipe1["amount"] and (item2 == null or (!item2.empty() and item2["amount"] >= recipe2["amount"])):
+	if !item1.is_empty() and item1["amount"] >= recipe1["amount"] and (item2 == null or (!item2.is_empty() and item2["amount"] >= recipe2["amount"])):
 		inventory.remove_id_from_inventory(recipe1["id"],recipe1["amount"])
 		if item2 != null:
 			inventory.remove_id_from_inventory(recipe2["id"],recipe2["amount"])

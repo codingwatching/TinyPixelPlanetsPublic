@@ -1,9 +1,9 @@
 extends Control
 
-onready var inventory = get_node("../Inventory")
-onready var cursor = get_node("../../Cursor")
-onready var world = get_node("../../World")
-onready var player = get_node("../../Player")
+@onready var inventory = get_node("../Inventory")
+@onready var cursor = get_node("../../Cursor")
+@onready var world = get_node("../../World")
+@onready var player = get_node("../../Player")
 
 func popup():
 	inventory.inventoryToggle(false)

@@ -4,8 +4,8 @@ var selectedSave = ""
 
 func update_save_list() -> void:
 	for save in $saves.get_children():
-		var dir = Directory.new()
-		if dir.dir_exists(Global.save_path + save.name):
+		var dir = DirAccess.open(Global.save_path)
+		if dir.dir_exists(save.name):
 			save.get_node("stats").hide()
 			save.get_node("delete").show()
 		else:
@@ -33,5 +33,5 @@ func start():
 	get_node("..").hide()
 	get_node("../../blank").show()
 	get_node("../../AnimationPlayer").play("zoom",-1,-1,true)
-	yield(get_node("../../AnimationPlayer"),"animation_finished")
-	var _er = get_tree().change_scene("res://scenes/Main.tscn")
+	await get_node("../../AnimationPlayer").animation_finished
+	var _er = get_tree().change_scene_to_file("res://scenes/Main.tscn")

@@ -3,7 +3,7 @@ extends TextureButton
 var loc = 0
 var mouseIn = false
 
-onready var main = get_node("../../..")
+@onready var main = get_node("../../..")
 
 func _ready():
 	if main.jRef == loc:

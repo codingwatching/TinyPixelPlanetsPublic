@@ -4,8 +4,8 @@ var entities = {"Slorg":preload("res://assets/enemies/Slorg.tscn")}
 
 var loaded = false
 
-onready var world = get_node("../World")
-onready var player = get_node("../Player")
+@onready var world = get_node("../World")
+@onready var player = get_node("../Player")
 
 func get_entity_data():
 	var data = []
@@ -15,7 +15,7 @@ func get_entity_data():
 
 func load_entities(data : Array):
 	for entity in data:
-		var newE = entities[entity["type"]].instance()
+		var newE = entities[entity["type"]].instantiate()
 		newE.position = entity["pos"]
 		newE.health = entity["health"]
 		newE.data = entity["data"]
@@ -29,11 +29,11 @@ func _on_Spawn_timeout():
 		for entity in $Hold.get_children():
 			if entity.hostile:
 				hostileCount += 1
-		for _i in range(int(rand_range(10,50))):
+		for _i in range(int(randf_range(10,50))):
 			var pos = Vector2(randi()%int(world.worldSize.x),randi()%int(world.worldSize.y))
 			if hostileCount < maxH and world.get_block_id(pos,1) == 0 and world.get_block_id(pos,0) == 0 and world.get_block_id(pos + Vector2(0,1),1) != 0 and pos.distance_to(player.position) > 48:
 				print("spawned at " + str(pos))
-				var slorg = entities["Slorg"].instance()
+				var slorg = entities["Slorg"].instantiate()
 				slorg.position = pos * Vector2(8,8)
 				$Hold.add_child(slorg)
 				hostileCount += 1

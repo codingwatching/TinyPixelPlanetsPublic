@@ -57,8 +57,8 @@ signal found_system
 func start_game():
 	print("---start game---")
 	if Global.new:
-		new()
-		yield(self,"found_system")
+		new_()
+		await self.found_system
 		Global.currentPlanet = find_planet("type","terra").id
 		Global.starterPlanetId = Global.currentPlanet
 		print("Current Planet: ", find_planet_id(Global.currentPlanet).pName)
@@ -68,22 +68,22 @@ func start_game():
 
 func start_space():
 	print("going into space")
-	var _er = get_tree().change_scene("res://scenes/PlanetSelect.tscn")
+	var _er = get_tree().change_scene_to_file("res://scenes/PlanetSelect.tscn")
 
 func land(planet : int):
 	Global.currentPlanet = planet
 	Global.new_planet()
 
-func new():
+func new_():
 	print("new")
 	randomize()
 	var Seed = randi()
 	new_system(Seed)
-	yield(get_tree(),"idle_frame")
+	await get_tree().process_frame
 	while !search_system("type").has("terra"):
 		Seed = randi()
 		new_system(Seed)
-		yield(get_tree(),"idle_frame")
+		await get_tree().process_frame
 	print("--- Star System ", currentStarName, " ---")
 	print("Seed: ", currentSeed)
 	print("Star: ", currentStar)
@@ -102,7 +102,7 @@ func new_system(systemSeed : int, loaded = false):
 	for child in $system.get_children():
 		child.queue_free()
 		$system.remove_child(child)
-	yield(get_tree(),"idle_frame")
+	await get_tree().process_frame
 	currentStar = ["M-type","K-type","G-type","B-type"][randi()%4]
 	currentStarName = create_name(currentSeed)
 	currentStarData = starData[currentStar]
@@ -113,7 +113,7 @@ func new_system(systemSeed : int, loaded = false):
 
 func create_planet(orbitBody = $stars, maxSize = sizeTypes.max_size, orbitingSize = 0) -> void:
 	#randomize()
-	var planet = PLANET.instance()
+	var planet = PLANET.instantiate()
 	planet.id = get_system_bodies().size()
 	planet.hasAtmosphere = bool(randi() % 2)
 	
@@ -131,7 +131,7 @@ func create_planet(orbitBody = $stars, maxSize = sizeTypes.max_size, orbitingSiz
 		var i = 0
 		while true:
 			i += 1
-			planet.orbitalDistance = int(rand_range(currentStarData["min_distance"],currentStarData["max_distance"]))
+			planet.orbitalDistance = int(randf_range(currentStarData["min_distance"],currentStarData["max_distance"]))
 			if is_clear_space(planet,orbitBody):
 				break
 			if i == MAX_SPACE_CHECK:
@@ -145,13 +145,13 @@ func create_planet(orbitBody = $stars, maxSize = sizeTypes.max_size, orbitingSiz
 				break
 			if i == MAX_SPACE_CHECK:
 				return
-		planet.modulate = Color.red
+		planet.modulate = Color.RED
 	planet.orbitingBody = orbitBody
-	planet.orbitalSpeed = int(rand_range(6,12))
-	planet.rotationSpeed = int(rand_range(1,8))
-	planet.currentOrbit = deg2rad(randi() % 360)
-	planet.currentRot = deg2rad(randi() % 360)
-	if !systemDat.empty() and systemDat["planets"].has(planet.id):
+	planet.orbitalSpeed = int(randf_range(6,12))
+	planet.rotationSpeed = int(randf_range(1,8))
+	planet.currentOrbit = deg_to_rad(randi() % 360)
+	planet.currentRot = deg_to_rad(randi() % 360)
+	if !systemDat.is_empty() and systemDat["planets"].has(planet.id):
 		planet.currentOrbit = systemDat["planets"][planet.id]["current_orbit"]
 		planet.currentRot = systemDat["planets"][planet.id]["current_rot"]
 	
@@ -163,7 +163,7 @@ func create_planet(orbitBody = $stars, maxSize = sizeTypes.max_size, orbitingSiz
 		else:
 			planet.type = planetData[size + "exotic"]
 		planet.hasAtmosphere = true
-	elif !currentStarData["habital"].empty() and abs(planet.orbitalDistance-orbitBody.orbitalDistance) > currentStarData["habital"][currentStarData["habital"].size()-1]:
+	elif !currentStarData["habital"].is_empty() and abs(planet.orbitalDistance-orbitBody.orbitalDistance) > currentStarData["habital"][currentStarData["habital"].size()-1]:
 		if randi() % 3 ==1:
 			planet.type = planetData[size + "snow"]
 			planet.hasAtmosphere = true
@@ -189,7 +189,7 @@ func create_planet(orbitBody = $stars, maxSize = sizeTypes.max_size, orbitingSiz
 		planet.pName = currentStarName + " " + num
 
 func is_clear_space(planetSelf : Object, orbitingBody : Object) -> bool:
-	if !get_orbiting_bodies(orbitingBody).empty():
+	if !get_orbiting_bodies(orbitingBody).is_empty():
 		for planet in get_orbiting_bodies(orbitingBody):
 			if planet != self:
 				var planetMoonArea = sizeData[planet.type["size"]]["distance"]
@@ -251,7 +251,7 @@ func find_planet_id(id : int, debug = false) -> Object:
 	return null
 
 func create_name(systemSeed : int) -> String:
-	var beforeLen = int(rand_range(2,6))
+	var beforeLen = int(randf_range(2,6))
 	var convertDic = {"0":"p","1":"a","2":"l","3":"c","4":"d","5":"e","6":"m","7":"g","8":"s","9":"i","10":"o","20":" ","30":"deg","40":"zok"}
 	var string = str(systemSeed)
 	if beforeLen > string.length():

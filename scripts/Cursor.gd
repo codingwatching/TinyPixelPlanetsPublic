@@ -1,10 +1,10 @@
-extends Sprite
+extends Sprite2D
 
 const REACH = 5
 
-onready var world = get_node("../World")
-onready var inventory = get_node("../CanvasLayer/Inventory")
-onready var player = get_node("../Player")
+@onready var world = get_node("../World")
+@onready var inventory = get_node("../CanvasLayer/Inventory")
+@onready var player = get_node("../Player")
 
 var canPlace = true
 var pause = false
@@ -18,7 +18,7 @@ var oldBlockPos = Vector2(0,0)
 
 func _process(_delta):
 	if !pause:
-		position = Vector2(int(stepify(get_global_mouse_position().x,world.BLOCK_SIZE.x)),int(stepify(get_global_mouse_position().y,world.BLOCK_SIZE.y)))
+		position = Vector2(int(snapped(get_global_mouse_position().x,world.BLOCK_SIZE.x)),int(snapped(get_global_mouse_position().y,world.BLOCK_SIZE.y)))
 		playerPos = Vector2(int(player.position.x/ world.BLOCK_SIZE.x),int((player.position.y+2)/ world.BLOCK_SIZE.y))
 		var blockPos = position / world.BLOCK_SIZE
 		if blockPos.x < playerPos.x - REACH:
@@ -89,7 +89,7 @@ func tool_action(itemId : int) -> void:
 				if hardness <= 0:
 					world.build_event("Break",position / world.BLOCK_SIZE,currentLayer)
 				else:
-					$break/AnimationPlayer.playback_speed = (1 / float(hardness)) * itemSelect["speed"]
+					$break/AnimationPlayer.speed_scale = (1 / float(hardness)) * itemSelect["speed"]
 					$break/AnimationPlayer.play("break")
 					breaking = true
 

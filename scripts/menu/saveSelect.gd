@@ -1,8 +1,8 @@
 extends TextureButton
 
-export var id = 0
+@export var id = 0
 
-onready var main = get_node("../..")
+@onready var main = get_node("../..")
 
 func _ready():
 	$Label.text = "SAVE " + str(id+1)

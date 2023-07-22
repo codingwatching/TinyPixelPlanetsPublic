@@ -2,15 +2,15 @@ extends ParallaxBackground
 
 const skyColorDict = {
 	SUNSET = Color("ff462d"),
-	DAY = Color.white,
+	DAY = Color.WHITE,
 	SUNRISE = Color("ffd190"),
 	NIGHT = Color("3d1b63")
 }
 
-export var defualtColor = Color.white
-export var nightColor = Color(0.43,0.39,0.49)
+@export var defualtColor = Color.WHITE
+@export var nightColor = Color(0.43,0.39,0.49)
 
-onready var sky = get_node("../ParallaxBackground/SkyLayer/sky")
+@onready var sky = get_node("../ParallaxBackground/SkyLayer/sky")
 
 var backTextures = {"terra":preload("res://textures/enviroment/backgrounds/terra_back.png"),
 	"stone":preload("res://textures/enviroment/backgrounds/stone_back.png"),
@@ -92,8 +92,8 @@ func change_sounds(volume1 : int,volume2 = -1000, volume3 = -1000) -> void:
 				get_node("../../sfx/winterWind").volume_db = volume1
 
 func set_background(type : String):
-	$back/Sprite.texture = backTextures[type]
-	$front/Sprite.texture = frontTextures[type]
+	$back/Sprite2D.texture = backTextures[type]
+	$front/Sprite2D.texture = frontTextures[type]
 
 
 func _on_World_world_loaded():

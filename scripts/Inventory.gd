@@ -3,12 +3,12 @@ extends Control
 const INV_BTN = preload("res://assets/InventoryBtn.tscn")
 const ITEM_PER_PAGE = 8
 
-onready var world = get_node("../../World")
-onready var slot1 = get_node("../Hotbar/InventoryBtn")
-onready var jAction = get_node("../Hotbar/J")
-onready var kAction = get_node("../Hotbar/K")
-onready var cursor = get_node("../../Cursor")
-onready var crafting = get_node("../Crafting")
+@onready var world = get_node("../../World")
+@onready var slot1 = get_node("../Hotbar/InventoryBtn")
+@onready var jAction = get_node("../Hotbar/J")
+@onready var kAction = get_node("../Hotbar/K")
+@onready var cursor = get_node("../../Cursor")
+@onready var crafting = get_node("../Crafting")
 
 #{"id":1,"amount",2}
 var inventory = []
@@ -27,7 +27,7 @@ func _ready():
 
 func _process(_delta):
 	if Input.is_action_just_pressed("ui_cancel") and visible:
-		yield(get_tree(),"idle_frame")
+		await get_tree().process_frame
 		inventoryToggle(false)
 	if Input.is_action_just_pressed("Inventory"):
 		inventoryToggle()
@@ -48,7 +48,7 @@ func add_to_inventory(id : int,amount : int) -> void:
 
 func remove_loc_from_inventory(loc : int) -> void:
 	if loc < inventory.size():
-		inventory.remove(loc)
+		inventory.remove_at(loc)
 		update_inventory()
 
 func remove_id_from_inventory(id : int, amount : int) -> void:
@@ -73,18 +73,18 @@ func update_inventory() -> void:
 	holdingRef = -1
 	
 	#Gets j and k refs
-	if !find_item(jId).empty():
+	if !find_item(jId).is_empty():
 		jRef = inventory.find(find_item(jId))
 	else:
 		jRef = -1
 		jId = 0
-	if !find_item(kId).empty():
+	if !find_item(kId).is_empty():
 		kRef = inventory.find(find_item(kId))
 	else:
 		kRef = -1
 		kId = 0
 	
-	if !inventory.empty():
+	if !inventory.is_empty():
 		#clears all items
 		for page in $items.get_children():
 			for item in page.get_children():
@@ -121,10 +121,10 @@ func update_inventory() -> void:
 					page.name = str((item-1) / ITEM_PER_PAGE)
 					$items.add_child(page)
 				loc = 0;x = 0;y = 0
-			var itemNode = INV_BTN.instance()
-			itemNode.rect_position = Vector2(x*50,y*16)
+			var itemNode = INV_BTN.instantiate()
+			itemNode.position = Vector2(x*50,y*16)
 			itemNode.loc = item
-			itemNode.get_node("Sprite").texture = world.get_item_texture(inventory[item]["id"])
+			itemNode.get_node("Sprite2D").texture = world.get_item_texture(inventory[item]["id"])
 			itemNode.get_node("Amount").text = str(inventory[item]["amount"])
 			$items.get_node(str(int((item-1) / float(ITEM_PER_PAGE)))).add_child(itemNode)
 			loc += 1

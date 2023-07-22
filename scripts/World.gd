@@ -3,16 +3,17 @@ extends Node2D
 const BLOCK = preload("res://assets/Block.tscn")
 const BLOCK_SIZE = Vector2(8,8)
 
-export var worldSize = Vector2(16,24)
-export var worldNoise : OpenSimplexNoise
-export var noiseScale = 15
-export var worldHeight = 10
+@export var worldSize = Vector2(16,24)
+@export var worldNoise : FastNoiseLite
+@export var commonOreNoise : FastNoiseLite
+@export var noiseScale = 15
+@export var worldHeight = 10
 
-onready var inventory = get_node("../CanvasLayer/Inventory")
-onready var enviroment = get_node("../CanvasLayer/Enviroment")
-onready var armor = get_node("../CanvasLayer/Inventory/Armor")
-onready var player = get_node("../Player")
-onready var entities = get_node("../Entities")
+@onready var inventory = get_node("../CanvasLayer/Inventory")
+@onready var enviroment = get_node("../CanvasLayer/Enviroment")
+@onready var armor = get_node("../CanvasLayer/Inventory/Armor")
+@onready var player = get_node("../Player")
+@onready var entities = get_node("../Entities")
 
 var currentPlanet : Object
 
@@ -121,8 +122,8 @@ signal update_blocks
 signal world_loaded
 
 func _ready():
-	StarSystem.connect("planet_ready",self,"start_world")
-	Global.connect("loaded_data",self,"start_world")
+	StarSystem.connect("planet_ready", Callable(self, "start_world"))
+	Global.connect("loaded_data", Callable(self, "start_world"))
 	if Global.gameStart:
 		StarSystem.start_game()
 
@@ -132,16 +133,16 @@ func _ready():
 func start_world():
 	print("World started")
 	if !StarSystem.planetReady:
-		yield(StarSystem,"planet_ready")
+		await StarSystem.planet_ready
 	#world size stuff
 	worldSize = StarSystem.get_current_world_size()
 #	get_node("../Player/Camera2D").limit_right = worldSize.x * BLOCK_SIZE.x - 4
 #	get_node("../Player/Camera2D").limit_bottom = (worldSize.y+1) * BLOCK_SIZE.y - 4
 	$StaticBody2D/Right.position = Vector2(worldSize.x * BLOCK_SIZE.x + 2,(worldSize.y * BLOCK_SIZE.y) / 2)
-	$StaticBody2D/Right.shape.extents.y = (worldSize.y * BLOCK_SIZE.y) / 2
-	$StaticBody2D/Left.shape.extents.y = (worldSize.y * BLOCK_SIZE.y) / 2
+	$StaticBody2D/Right.shape.size.y = (worldSize.y * BLOCK_SIZE.y) / 2
+	$StaticBody2D/Left.shape.size.y = (worldSize.y * BLOCK_SIZE.y) / 2
 	$StaticBody2D/Left.position.y = (worldSize.y * BLOCK_SIZE.y) / 2
-	$StaticBody2D/Bottom.shape.extents.y = (worldSize.x * BLOCK_SIZE.x) / 2
+	$StaticBody2D/Bottom.shape.size.y = (worldSize.x * BLOCK_SIZE.x) / 2
 	$StaticBody2D/Bottom.position = Vector2((worldSize.x * BLOCK_SIZE.x) / 2,worldSize.y * BLOCK_SIZE.y)
 	
 	var worldType = StarSystem.find_planet_id(Global.currentPlanet).type["type"]
@@ -168,7 +169,7 @@ func start_world():
 	get_node("../CanvasLayer/ParallaxBackground2/Sky").init_sky()
 	worldLoaded = true
 	get_node("../CanvasLayer/Black/AnimationPlayer").play("fadeOut")
-	yield(get_tree(),"idle_frame")
+	await get_tree().process_frame
 	emit_signal("update_blocks")
 	Global.gameStart = false
 	inventory.update_inventory()
@@ -182,8 +183,8 @@ func generateWorld(worldType : String):
 	else:
 		worldNoise = load("res://noise/Main.tres")
 	worldNoise.seed = worldSeed
-	var copperOre = OpenSimplexNoise.new()
-	copperOre.seed = StarSystem.currentSeed;copperOre.period = 2;copperOre.persistence = 0.5;copperOre.lacunarity = 2
+	var copperOre = commonOreNoise
+	copperOre.seed = StarSystem.currentSeed
 	match worldType:
 		"terra":
 			for x in range(worldSize.x):
@@ -369,14 +370,14 @@ func set_block_all(pos: Vector2, id : int) -> void:
 func set_block(pos : Vector2, layer : int, id : int, update = false) -> void:
 	if get_block(pos,layer) != null or (id == 0 and get_block(pos,layer) != null):
 		get_block(pos,layer).queue_free()
-		yield(get_tree(),"idle_frame")
+		await get_tree().process_frame
 	if id > 0:
-		var block = BLOCK.instance()
+		var block = BLOCK.instantiate()
 		block.position = pos * BLOCK_SIZE
 		block.id = id
 		block.layer = layer
 		block.name = str(pos.x) + "," + str(pos.y) + "," + str(layer)
-		block.get_node("Sprite").texture = get_item_texture(id)
+		block.get_node("Sprite2D").texture = get_item_texture(id)
 		$blocks.add_child(block)
 	if update:
 		for x in range(pos.x-1,pos.x+2):
@@ -402,7 +403,7 @@ func build_event(action : String, pos : Vector2, layer : int,id = 0, itemAction 
 				if typeof(itemsToDrop[i]["amount"]) != TYPE_ARRAY:
 					inventory.add_to_inventory(itemsToDrop[i]["id"],itemsToDrop[i]["amount"])
 				else:
-					inventory.add_to_inventory(itemsToDrop[i]["id"],int(rand_range(itemsToDrop[i]["amount"][0],itemsToDrop[i]["amount"][1] + 1)))
+					inventory.add_to_inventory(itemsToDrop[i]["id"],int(randf_range(itemsToDrop[i]["amount"][0],itemsToDrop[i]["amount"][1] + 1)))
 
 func _on_GoUp_pressed():
 	Global.save(get_world_data(false))

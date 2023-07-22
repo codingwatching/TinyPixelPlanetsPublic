@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 class_name Entity
 
 const GRAVITY = 4
@@ -11,7 +11,7 @@ var new = true
 var data = {}
 var type : String
 
-onready var effects = get_node("../../../Effects")
+@onready var effects = get_node("../../../Effects")
 
 func die():
 	print("bruh")
@@ -21,9 +21,9 @@ func die():
 func damage(hp):
 	print(health)
 	modulate = Color("ff5959")
-	effects.floating_text(position, "-" + str(hp), Color.red)
+	effects.floating_text(position, "-" + str(hp), Color.RED)
 	health -= hp
-	yield(get_tree().create_timer(0.5),"timeout")
-	modulate = Color.white
+	await get_tree().create_timer(0.5).timeout
+	modulate = Color.WHITE
 	if health <= 0:
 		die()

@@ -1,6 +1,6 @@
 extends Control
 
-onready var player = get_node("../../../Player")
+@onready var player = get_node("../../../Player")
 
 func _process(delta):
 	$Health.max_value = player.maxHealth

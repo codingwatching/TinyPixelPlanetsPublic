@@ -1,4 +1,4 @@
-extends KinematicBody2D
+extends CharacterBody2D
 
 const GRAVITY = 4
 const ACCEL = 8
@@ -10,12 +10,12 @@ const JUMPSPEED = 75
 const DEFAULT_LAYER = 5
 const NO_PLATFORM = 1
 
-onready var cursor = get_node("../Cursor")
-onready var armor = get_node("../CanvasLayer/Inventory/Armor")
-onready var effects = get_node("../Effects")
-onready var inventory = get_node("../CanvasLayer/Inventory")
-onready var world = get_node("../World")
-onready var entities = get_node("../Entities")
+@onready var cursor = get_node("../Cursor")
+@onready var armor = get_node("../CanvasLayer/Inventory/Armor")
+@onready var effects = get_node("../Effects")
+@onready var inventory = get_node("../CanvasLayer/Inventory")
+@onready var world = get_node("../World")
+@onready var entities = get_node("../Entities")
 
 var motion = Vector2(0,0)
 
@@ -120,7 +120,10 @@ func _physics_process(_delta):
 			elif Input.is_action_pressed("action2"):
 				swing(inventory.kId)
 		
-		motion = move_and_slide(motion,Vector2(0,-1))
+		set_velocity(motion)
+		set_up_direction(Vector2(0,-1))
+		move_and_slide()
+		motion = velocity
 
 func swing(item):
 	if world.itemData.has(item) and item > 0 and ["Tool","weapon"].has(world.itemData[item]["type"]) and !swinging:
@@ -131,22 +134,22 @@ func swing(item):
 		if world.itemData[item]["type"] == "weapon":
 			for enemy in entities.get_node("Hold").get_children():
 				var space_state = get_world_2d().direct_space_state
-				var result = space_state.intersect_ray(position, enemy.position, [self], 1)
-				if result.empty() and position.distance_to(enemy.position) < world.itemData[swingingWith]["range"] and sign(enemy.position.x - position.x) == sign(get_global_mouse_position().x - position.x):
+				var result = space_state.intersect_ray(PhysicsRayQueryParameters2D.create(position, enemy.position, 1, [self]))
+				if result.is_empty() and position.distance_to(enemy.position) < world.itemData[swingingWith]["range"] and sign(enemy.position.x - position.x) == sign(get_global_mouse_position().x - position.x):
 					enemy.damage(world.itemData[swingingWith]["dmg"])
 
 func damage(hp):
 	if !dead:
 		modulate = Color("ff5959")
-		effects.floating_text(position, "-" + str(hp), Color.red)
+		effects.floating_text(position, "-" + str(hp), Color.RED)
 		health -= hp
-		yield(get_tree().create_timer(0.5),"timeout")
+		await get_tree().create_timer(0.5).timeout
 		if health < 0:
 			dead = true
 			effects.death_particles(position)
 			hide()
 			get_node("../CanvasLayer/Dead").popup()
-		modulate = Color.white
+		modulate = Color.WHITE
 
 func _on_coyoteTimer_timeout():
 	coyote = false
@@ -173,7 +176,7 @@ func _on_Armor_updated_armor(armorData):
 	var set = {"Shirt":"shirt","Chestplate":"shirt","Pants":"pants","Leggings":"pants","Boots":"boots","Shoes":"boots","Hat":"headwear","Helmet":"headwear"}
 	var display = {"pants":null,"shirt":null,"boots":null,"headwear":null}
 	for armorType in armorData:
-		if !armorData[armorType].empty():
+		if !armorData[armorType].is_empty():
 			var id = armorData[armorType]["id"]
 			if !["Shirt","Chestplate"].has(armorType):
 				display[set[armorType]] = load("res://textures/player/" + files[id]["folder"]+ "/" + files[id]["file"])
@@ -193,7 +196,7 @@ func _on_Armor_updated_armor(armorData):
 					$Textures.get_node(sheet).hide()
 		else:
 			if sheet == "headwear":
-				$Textures/headwear.modulate = Color.white
+				$Textures/headwear.modulate = Color.WHITE
 			$Textures.get_node(sheet).show()
 			$Textures.get_node(sheet).texture = display[sheet]
 
