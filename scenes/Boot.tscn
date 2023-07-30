@@ -208,26 +208,30 @@ script = ExtResource("7")
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
 
 [node name="Sky" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0, 0)
+motion_scale = Vector2(2.08165e-12, 2.08165e-12)
+motion_offset = Vector2(2.08165e-12, 100)
+motion_mirroring = Vector2(480, 210)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/Sky"]
 texture = ExtResource("4")
 
 [node name="CloudBack" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.1, 0.1)
+motion_scale = Vector2(1, 0.1)
+motion_offset = Vector2(2.08165e-12, 70)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/CloudBack"]
 texture = ExtResource("5")
 
 [node name="CloudMid" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.5, 0.5)
+motion_scale = Vector2(1, 0.5)
+motion_offset = Vector2(2.08165e-12, 40)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/CloudMid"]
 texture = ExtResource("3")
 
 [node name="CloudFront" type="ParallaxLayer" parent="CanvasLayer/ParallaxBackground"]
-motion_scale = Vector2(0.75, 0.75)
-motion_offset = Vector2(0, 10)
+motion_scale = Vector2(1, 0.75)
+motion_offset = Vector2(2.08165e-12, 30)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/ParallaxBackground/CloudFront"]
 texture = ExtResource("6")

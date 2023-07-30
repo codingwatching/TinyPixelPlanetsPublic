@@ -1,0 +1,25 @@
+[gd_resource type="FontVariation" load_steps=3 format=3 uid="uid://ctl3rq72ynfad"]
+
+[ext_resource type="FontFile" uid="uid://ddjdoia71anim" path="res://fonts/PixelpossiblitiesSmall.ttf" id="1_j3dnv"]
+
+[sub_resource type="FontFile" id="FontFile_te8d5"]
+fallbacks = Array[Font]([ExtResource("1_j3dnv")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+
+[resource]
+base_font = SubResource("FontFile_te8d5")
+spacing_top = -6
+spacing_bottom = -4

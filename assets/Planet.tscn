@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://scripts/planet.gd" id="2"]
 [ext_resource type="Shader" uid="uid://ilqplgv2hcl0" path="res://shaders/new_shader.tres" id="2_vyyfx"]
-[ext_resource type="PackedScene" path="res://assets/PlanetShadeTop.tscn" id="3"]
+[ext_resource type="PackedScene" uid="uid://fvahbbrsj8g" path="res://assets/PlanetShadeTop.tscn" id="3"]
 
 [sub_resource type="CircleShape2D" id="1"]
 resource_local_to_scene = true

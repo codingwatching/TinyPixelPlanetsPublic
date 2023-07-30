@@ -1,1 +1,6 @@
+WorldEnvironment
+Sprite2D
+ParallaxBackground
+ParallaxLayer
+TextureRect
 VisibleOnScreenNotifier2D

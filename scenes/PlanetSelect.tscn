@@ -1,254 +1,279 @@
-[gd_scene load_steps=30 format=2]
+[gd_scene load_steps=31 format=3 uid="uid://c247pvq868kay"]
 
-[ext_resource path="res://textures/enviroment/space-2.png" type="Texture2D" id=1]
-[ext_resource path="res://scripts/PlanetSelect.gd" type="Script" id=2]
-[ext_resource path="res://textures/enviroment/stars.png" type="Texture2D" id=3]
-[ext_resource path="res://textures/stars/B-type.png" type="Texture2D" id=4]
-[ext_resource path="res://textures/stars/M-type.png" type="Texture2D" id=5]
-[ext_resource path="res://textures/stars/G-type.png" type="Texture2D" id=6]
-[ext_resource path="res://textures/stars/K-type.png" type="Texture2D" id=7]
-[ext_resource path="res://textures/GUI/Blank.png" type="Texture2D" id=8]
-[ext_resource path="res://textures/ships/ship3.png" type="Texture2D" id=9]
-[ext_resource path="res://textures/ships/ship1.png" type="Texture2D" id=10]
-[ext_resource path="res://textures/ships/ship2.png" type="Texture2D" id=11]
-[ext_resource path="res://scripts/ship.gd" type="Script" id=12]
-[ext_resource path="res://textures/ships/pointer.png" type="Texture2D" id=13]
-[ext_resource path="res://scripts/stars.gd" type="Script" id=14]
-[ext_resource path="res://Audio/sfx/Ambience/mixkit-space-ship-hum-2136.wav" type="AudioStream" id=15]
-[ext_resource path="res://textures/GUI/space/Nav.png" type="Texture2D" id=16]
-[ext_resource path="res://fonts/pixel.tres" type="FontFile" id=18]
-[ext_resource path="res://scripts/space/Nav.gd" type="Script" id=23]
+[ext_resource type="Texture2D" uid="uid://q5y8gsapxr2u" path="res://textures/enviroment/space-2.png" id="1"]
+[ext_resource type="Script" path="res://scripts/PlanetSelect.gd" id="2"]
+[ext_resource type="Texture2D" uid="uid://cvmwgc4ylfr23" path="res://textures/enviroment/stars.png" id="3"]
+[ext_resource type="Texture2D" uid="uid://cpka00u60e2o6" path="res://textures/stars/B-type.png" id="4"]
+[ext_resource type="Texture2D" uid="uid://i2egkxg355bc" path="res://textures/stars/M-type.png" id="5"]
+[ext_resource type="Texture2D" uid="uid://cdd74fa375w7b" path="res://textures/stars/G-type.png" id="6"]
+[ext_resource type="Texture2D" uid="uid://c6kildq205cgu" path="res://textures/stars/K-type.png" id="7"]
+[ext_resource type="Texture2D" uid="uid://bw65m07whu24x" path="res://textures/GUI/Blank.png" id="8"]
+[ext_resource type="Texture2D" uid="uid://bx0iiv86qnwvg" path="res://textures/ships/ship3.png" id="9"]
+[ext_resource type="Texture2D" uid="uid://cahnes3un3i6x" path="res://textures/ships/ship1.png" id="10"]
+[ext_resource type="Texture2D" uid="uid://b6cdq1u3n5xsg" path="res://textures/ships/ship2.png" id="11"]
+[ext_resource type="Script" path="res://scripts/ship.gd" id="12"]
+[ext_resource type="Texture2D" uid="uid://bny4yxxlpauce" path="res://textures/ships/pointer.png" id="13"]
+[ext_resource type="Script" path="res://scripts/stars.gd" id="14"]
+[ext_resource type="AudioStream" uid="uid://70pa8tjux8sr" path="res://Audio/sfx/Ambience/mixkit-space-ship-hum-2136.wav" id="15"]
+[ext_resource type="Texture2D" uid="uid://vmrmbg3v2gif" path="res://textures/GUI/space/Nav.png" id="16"]
+[ext_resource type="FontVariation" uid="uid://btkxalbqgmbie" path="res://fonts/Pixel.tres" id="18"]
+[ext_resource type="Script" path="res://scripts/space/Nav.gd" id="23"]
 
-[sub_resource type="Animation" id=5]
+[sub_resource type="Animation" id="5"]
 length = 0.001
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ) ]
+"values": [Color(0, 0, 0, 1)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ true ]
+"values": [true]
 }
 
-[sub_resource type="Animation" id=6]
+[sub_resource type="Animation" id="6"]
 resource_name = "fadeIn"
 length = 0.6
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.6 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 0, 0, 0, 0 ), Color( 0, 0, 0, 1 ) ]
+"values": [Color(0, 0, 0, 0), Color(0, 0, 0, 1)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0 ),
-"transitions": PackedFloat32Array( 1 ),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ true ]
+"values": [true]
 }
 
-[sub_resource type="Animation" id=7]
+[sub_resource type="Animation" id="7"]
 resource_name = "fadeOut"
 length = 0.6
 tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
 tracks/0/path = NodePath(".:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
-tracks/0/imported = false
-tracks/0/enabled = true
 tracks/0/keys = {
-"times": PackedFloat32Array( 0, 0.6 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [ Color( 0, 0, 0, 1 ), Color( 0, 0, 0, 0 ) ]
+"values": [Color(0, 0, 0, 1), Color(0, 0, 0, 0)]
 }
 tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
 tracks/1/path = NodePath(".:visible")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
-tracks/1/imported = false
-tracks/1/enabled = true
 tracks/1/keys = {
-"times": PackedFloat32Array( 0, 0.6 ),
-"transitions": PackedFloat32Array( 1, 1 ),
+"times": PackedFloat32Array(0, 0.6),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [ true, false ]
+"values": [true, false]
 }
 
-[sub_resource type="AtlasTexture" id=8]
-atlas = ExtResource( 16 )
-region = Rect2( 2, 99, 38, 39 )
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_s157x"]
+_data = {
+"RESET": SubResource("5"),
+"fadeIn": SubResource("6"),
+"fadeOut": SubResource("7")
+}
 
-[sub_resource type="AtlasTexture" id=9]
-atlas = ExtResource( 16 )
-region = Rect2( 2, 86, 38, 11 )
+[sub_resource type="AtlasTexture" id="8"]
+atlas = ExtResource("16")
+region = Rect2(2, 99, 38, 39)
 
-[sub_resource type="AtlasTexture" id=10]
-atlas = ExtResource( 16 )
-region = Rect2( 41, 86, 38, 11 )
+[sub_resource type="AtlasTexture" id="9"]
+atlas = ExtResource("16")
+region = Rect2(2, 86, 38, 11)
 
-[sub_resource type="AtlasTexture" id=11]
-atlas = ExtResource( 16 )
-region = Rect2( 42, 122, 8, 16 )
+[sub_resource type="AtlasTexture" id="10"]
+atlas = ExtResource("16")
+region = Rect2(41, 86, 38, 11)
 
-[sub_resource type="AtlasTexture" id=12]
-atlas = ExtResource( 16 )
-region = Rect2( 51, 122, 8, 16 )
+[sub_resource type="AtlasTexture" id="11"]
+atlas = ExtResource("16")
+region = Rect2(42, 122, 8, 16)
 
-[sub_resource type="Environment" id=2]
+[sub_resource type="AtlasTexture" id="12"]
+atlas = ExtResource("16")
+region = Rect2(51, 122, 8, 16)
+
+[sub_resource type="Environment" id="2"]
 background_mode = 4
 glow_enabled = true
 glow_intensity = 0.63
 glow_strength = 1.29
-glow_high_quality = true
 
-[sub_resource type="SpriteFrames" id=3]
-animations = [ {
-"frames": [ ExtResource( 11 ), ExtResource( 9 ) ],
+[sub_resource type="SpriteFrames" id="3"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("11")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9")
+}],
 "loop": true,
-"name": "fly",
+"name": &"fly",
 "speed": 2.0
 }, {
-"frames": [ ExtResource( 10 ) ],
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("10")
+}],
 "loop": true,
-"name": "idle",
+"name": &"idle",
 "speed": 5.0
-} ]
+}]
 
-[sub_resource type="CapsuleShape2D" id=4]
-radius = 2.0
+[sub_resource type="CapsuleShape2D" id="4"]
+radius = 1.0
 height = 2.0
 
 [node name="PlanetSelect" type="Node2D"]
-script = ExtResource( 2 )
+script = ExtResource("2")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="BG" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.1, 0.1 )
-motion_mirroring = Vector2( 256, 256 )
+motion_scale = Vector2(0.1, 0.1)
+motion_mirroring = Vector2(256, 256)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BG"]
-texture = ExtResource( 1 )
+texture = ExtResource("1")
 centered = false
-region_rect = Rect2( 0, 0, 256, 256 )
+region_rect = Rect2(0, 0, 256, 256)
 
 [node name="Stars" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2( 0.2, 0.2 )
-motion_mirroring = Vector2( 256, 256 )
+motion_scale = Vector2(0.2, 0.2)
+motion_mirroring = Vector2(256, 256)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Stars"]
-texture = ExtResource( 3 )
+texture = ExtResource("3")
 centered = false
-region_rect = Rect2( 0, 0, 256, 256 )
+region_rect = Rect2(0, 0, 256, 256)
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Black" type="TextureRect" parent="CanvasLayer"]
-modulate = Color( 0, 0, 0, 1 )
+modulate = Color(0, 0, 0, 1)
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-texture = ExtResource( 8 )
-expand = true
+texture = ExtResource("8")
+expand_mode = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CanvasLayer/Black"]
-anims/RESET = SubResource( 5 )
-anims/fadeIn = SubResource( 6 )
-anims/fadeOut = SubResource( 7 )
+libraries = {
+"": SubResource("AnimationLibrary_s157x")
+}
 
 [node name="Nav" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 9
 anchor_bottom = 1.0
 offset_left = -40.0
 offset_right = 18.0
-script = ExtResource( 23 )
+grow_vertical = 2
+script = ExtResource("23")
 
 [node name="Map" type="TextureRect" parent="CanvasLayer/Nav"]
 visible = false
+layout_mode = 0
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 2.0
 offset_top = -41.0
 offset_right = 40.0
 offset_bottom = -2.0
-texture = SubResource( 8 )
+texture = SubResource("8")
 
 [node name="SystemInfoBtn" type="TextureButton" parent="CanvasLayer/Nav"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 147.0
 offset_right = 40.0
 offset_bottom = 158.0
 toggle_mode = true
-texture_normal = SubResource( 9 )
-texture_pressed = SubResource( 10 )
+texture_normal = SubResource("9")
+texture_pressed = SubResource("10")
 
 [node name="Label" type="Label" parent="CanvasLayer/Nav/SystemInfoBtn"]
+layout_mode = 0
 offset_left = 3.0
 offset_top = 2.0
 offset_right = 34.0
 offset_bottom = 10.0
-theme_override_fonts/font = ExtResource( 18 )
+theme_override_fonts/font = ExtResource("18")
 text = "System"
 
 [node name="Tab" type="TextureButton" parent="CanvasLayer/Nav"]
+layout_mode = 0
 offset_left = 42.0
 offset_top = 142.0
 offset_right = 50.0
 offset_bottom = 158.0
 toggle_mode = true
-texture_normal = SubResource( 11 )
-texture_pressed = SubResource( 12 )
+texture_normal = SubResource("11")
+texture_pressed = SubResource("12")
 
 [node name="SystemInfo" type="NinePatchRect" parent="CanvasLayer/Nav"]
 visible = false
+layout_mode = 0
 offset_left = 2.0
 offset_top = 1.0
 offset_right = 97.0
 offset_bottom = 104.0
-texture = ExtResource( 16 )
-region_rect = Rect2( 2, 2, 38, 82 )
+texture = ExtResource("16")
+region_rect = Rect2(2, 2, 38, 82)
 patch_margin_left = 3
 patch_margin_top = 12
 patch_margin_right = 3
 patch_margin_bottom = 3
 
 [node name="name" type="Label" parent="CanvasLayer/Nav/SystemInfo"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 3.0
 offset_right = 93.0
 offset_bottom = 11.0
-theme_override_fonts/font = ExtResource( 18 )
+theme_override_fonts/font = ExtResource("18")
 text = "SAB-1390"
-align = 1
 clip_text = true
 
 [node name="Planets" type="VBoxContainer" parent="CanvasLayer/Nav/SystemInfo"]
+layout_mode = 0
 offset_left = 2.0
 offset_top = 12.0
 offset_right = 56.0
@@ -258,54 +283,52 @@ theme_override_constants/separation = 0
 [node name="system" type="Node2D" parent="."]
 
 [node name="stars" type="Node2D" parent="."]
-script = ExtResource( 14 )
+script = ExtResource("14")
 
 [node name="B-type" type="Sprite2D" parent="stars"]
-modulate = Color( 0.8, 0.9, 1.1, 1 )
-texture = ExtResource( 4 )
+modulate = Color(0.8, 0.9, 1.1, 1)
+texture = ExtResource("4")
 
 [node name="G-type" type="Sprite2D" parent="stars"]
 visible = false
-modulate = Color( 1.05, 1.05, 1, 1 )
-texture = ExtResource( 6 )
+modulate = Color(1.05, 1.05, 1, 1)
+texture = ExtResource("6")
 
 [node name="K-type" type="Sprite2D" parent="stars"]
 visible = false
-modulate = Color( 1.1, 1.02, 1, 1 )
-texture = ExtResource( 7 )
+modulate = Color(1.1, 1.02, 1, 1)
+texture = ExtResource("7")
 
 [node name="M-type" type="Sprite2D" parent="stars"]
 visible = false
-modulate = Color( 1.1, 1, 1, 1 )
-texture = ExtResource( 5 )
+modulate = Color(1.1, 1, 1, 1)
+texture = ExtResource("5")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource( 2 )
+environment = SubResource("2")
 
 [node name="ship" type="CharacterBody2D" parent="."]
-script = ExtResource( 12 )
+script = ExtResource("12")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="ship"]
-position = Vector2( -0.5, 0 )
-frames = SubResource( 3 )
-animation = "fly"
+position = Vector2(-0.5, 0)
+sprite_frames = SubResource("3")
+animation = &"fly"
 frame = 1
-playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ship"]
 rotation = 1.5708
-shape = SubResource( 4 )
+shape = SubResource("4")
 disabled = true
 
 [node name="Camera2D" type="Camera2D" parent="ship"]
-current = true
 
 [node name="pointer" type="Sprite2D" parent="ship"]
-position = Vector2( 6, 0 )
-texture = ExtResource( 13 )
+position = Vector2(6, 0)
+texture = ExtResource("13")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="ship"]
-stream = ExtResource( 15 )
+stream = ExtResource("15")
 volume_db = -7.0
 autoplay = true
 

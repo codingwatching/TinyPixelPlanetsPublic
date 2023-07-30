@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://dnlpderwt87iu"]
 
 [ext_resource type="Script" path="res://scripts/SkyBody.gd" id="1"]
-[ext_resource type="PackedScene" path="res://assets/PlanetShade.tscn" id="2"]
+[ext_resource type="PackedScene" uid="uid://cik1untp8eva2" path="res://assets/PlanetShade.tscn" id="2"]
 [ext_resource type="Texture2D" uid="uid://j7nw3wc6gjoj" path="res://textures/planets/desert.png" id="3"]
 [ext_resource type="Shader" uid="uid://3podr5homxun" path="res://shaders/SkyBodyNew.tres" id="3_xq2om"]
 
@@ -69,7 +69,6 @@ shader = SubResource("5")
 [sub_resource type="ShaderMaterial" id="17"]
 resource_local_to_scene = true
 shader = ExtResource("3_xq2om")
-shader_parameter/isNight = true
 
 [node name="SkyBody" type="Node2D"]
 material = SubResource("6")

@@ -1,7 +1,7 @@
-[gd_resource type="Theme" load_steps=2 format=2]
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://7256hbxba7eq"]
 
-[ext_resource path="res://fonts/pixelSmall.tres" type="FontFile" id=1]
+[ext_resource type="FontVariation" uid="uid://bdjn1wm332vc4" path="res://fonts/pixelSmall.tres" id="1"]
 
 [resource]
-default_font = ExtResource( 1 )
-Label/colors/font_color = Color( 0.854902, 0.878431, 0.917647, 1 )
+default_font = ExtResource("1")
+Label/colors/font_color = Color(0.854902, 0.878431, 0.917647, 1)

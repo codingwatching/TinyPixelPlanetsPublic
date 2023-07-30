@@ -1,8 +1,3 @@
-# Tiny Pixel Planets Title Update 3 (Unstable branch)
-## Features roadmap
-- Add a tutorial
-- New blocks
-- New planets
-- Currency
-- Shop planet
-- Fixes and improvements
+# Tiny Pixel Planets TU3 Godot 4.1 branch (unstable)
+This branch is for finally updating Tiny Pixel Planets from godot 3 to 4. This will allow the game to use many features that are unique to godot 4, while also boosting performance.
+Currently this branch is on Tiny Pixel Planets Title update 3 beta 3, so main will not be updated to Godot 4 even after this branch is complete as I will have to finish Title update 3 after upgrading.

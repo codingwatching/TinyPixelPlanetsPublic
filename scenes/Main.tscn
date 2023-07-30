@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://cetc5qfldnjkh"]
+[gd_scene load_steps=126 format=3 uid="uid://cetc5qfldnjkh"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1"]
 [ext_resource type="Texture2D" uid="uid://cg8iu37rse62o" path="res://textures/enviroment/sky.png" id="2"]
@@ -9,12 +9,13 @@
 [ext_resource type="Script" path="res://scripts/Cursor.gd" id="7"]
 [ext_resource type="Texture2D" uid="uid://bfov3xohtlqrg" path="res://textures/GUI/main/GUI_interact.png" id="8"]
 [ext_resource type="Script" path="res://scripts/Inventory.gd" id="9"]
-[ext_resource type="FontFile" path="res://fonts/pixel.tres" id="10"]
 [ext_resource type="Script" path="res://scripts/Crafting.gd" id="11"]
 [ext_resource type="Script" path="res://scripts/Pause.gd" id="12"]
 [ext_resource type="Texture2D" uid="uid://bw65m07whu24x" path="res://textures/GUI/Blank.png" id="13"]
+[ext_resource type="FontVariation" uid="uid://btkxalbqgmbie" path="res://fonts/Pixel.tres" id="13_rdlhm"]
+[ext_resource type="FontFile" uid="uid://del8jcn0tyeb8" path="res://fonts/PixelPossibilities.ttf" id="13_sem2d"]
 [ext_resource type="Texture2D" uid="uid://ckmc2or6ug31t" path="res://textures/GUI/Menu/Buttons.png" id="14"]
-[ext_resource type="Theme" path="res://fonts/default_theme.tres" id="15"]
+[ext_resource type="Theme" uid="uid://7256hbxba7eq" path="res://fonts/default_theme.tres" id="15"]
 [ext_resource type="PackedScene" uid="uid://jwmkcb0jw60q" path="res://assets/Player.tscn" id="16"]
 [ext_resource type="Texture2D" uid="uid://x76cu58uy4fu" path="res://textures/GUI/main/bars.png" id="17"]
 [ext_resource type="Script" path="res://scripts/Sky.gd" id="18"]
@@ -35,8 +36,10 @@
 [ext_resource type="Texture2D" uid="uid://dcfa856fvsium" path="res://textures/GUI/main/k.png" id="33"]
 [ext_resource type="Texture2D" uid="uid://cili4ly6xbwbw" path="res://textures/GUI/main/j.png" id="34"]
 [ext_resource type="Script" path="res://scripts/Main.gd" id="35"]
+[ext_resource type="FontFile" uid="uid://d2ckcx85skfgq" path="res://fonts/upheavtt.ttf" id="35_pyqja"]
 [ext_resource type="Texture2D" uid="uid://bydci8kmmptte" path="res://textures/GUI/main/break1.png" id="36"]
 [ext_resource type="Texture2D" uid="uid://c1o4myppo1646" path="res://textures/GUI/main/break4.png" id="37"]
+[ext_resource type="FontVariation" uid="uid://cfn2kuay6a7mj" path="res://fonts/Header.tres" id="37_4qay7"]
 [ext_resource type="Texture2D" uid="uid://b5crj7kuc6uwb" path="res://textures/GUI/main/break2.png" id="38"]
 [ext_resource type="Texture2D" uid="uid://d122e3g63l377" path="res://textures/GUI/main/break3.png" id="39"]
 [ext_resource type="Script" path="res://scripts/Armor.gd" id="40"]
@@ -49,7 +52,6 @@
 [ext_resource type="Script" path="res://scripts/Effects.gd" id="47"]
 [ext_resource type="Texture2D" uid="uid://q5y8gsapxr2u" path="res://textures/enviroment/space-2.png" id="48"]
 [ext_resource type="Script" path="res://scripts/Dead.gd" id="49"]
-[ext_resource type="FontFile" path="res://fonts/pixelHeader.tres" id="50"]
 [ext_resource type="FastNoiseLite" path="res://noise/Main.tres" id="51"]
 
 [sub_resource type="VisualShaderNodeFloatOp" id="67"]
@@ -415,6 +417,32 @@ region = Rect2(173, 110, 16, 16)
 atlas = ExtResource("14")
 region = Rect2(96, 68, 64, 15)
 
+[sub_resource type="LabelSettings" id="LabelSettings_i4gvx"]
+font = ExtResource("13_rdlhm")
+
+[sub_resource type="FontFile" id="FontFile_dj2i7"]
+fallbacks = Array[Font]([ExtResource("13_sem2d")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/16/0/kerning_overrides/50/0 = Vector2(0, 0)
+cache/0/50/0/ascent = 0.0
+cache/0/50/0/descent = 0.0
+cache/0/50/0/underline_position = 0.0
+cache/0/50/0/underline_thickness = 0.0
+cache/0/50/0/scale = 1.0
+cache/0/50/0/kerning_overrides/16/0 = Vector2(0, 0)
+cache/0/50/0/kerning_overrides/50/0 = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_pwli7"]
+font = ExtResource("13_rdlhm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_v8tou"]
+font = ExtResource("13_rdlhm")
+
 [sub_resource type="Animation" id="11"]
 length = 0.001
 tracks/0/type = "value"
@@ -504,6 +532,35 @@ _data = {
 "fadeIn": SubResource("12"),
 "fadeOut": SubResource("13")
 }
+
+[sub_resource type="FontFile" id="FontFile_5lt0k"]
+fallbacks = Array[Font]([ExtResource("35_pyqja")])
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="LabelSettings" id="LabelSettings_1qgfe"]
+font = ExtResource("37_4qay7")
+font_size = 32
+outline_size = 6
+outline_color = Color(0.133333, 0.133333, 0.133333, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_q6nam"]
+font = ExtResource("13_rdlhm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_fu1dw"]
+font = ExtResource("13_rdlhm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_to2gn"]
+font = ExtResource("13_rdlhm")
+
+[sub_resource type="LabelSettings" id="LabelSettings_mi6vg"]
+font = ExtResource("13_rdlhm")
+shadow_color = Color(0.305882, 0.305882, 0.305882, 1)
+shadow_offset = Vector2(0.5, 0.5)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_tr3r5"]
 
@@ -609,6 +666,7 @@ position = Vector2(-39, -43)
 texture = ExtResource("46")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="CanvasLayer"]
+visible = false
 
 [node name="Space" type="Sprite2D" parent="CanvasLayer/ParallaxBackground"]
 position = Vector2(120, 120)
@@ -622,9 +680,11 @@ motion_scale = Vector2(0, 0)
 material = SubResource("65")
 scale = Vector2(1.92188, 1.28906)
 texture = ExtResource("2")
+centered = false
 
 [node name="ParallaxBackground2" type="ParallaxBackground" parent="CanvasLayer"]
 layer = -90
+visible = false
 
 [node name="Sky" type="Node2D" parent="CanvasLayer/ParallaxBackground2"]
 position = Vector2(120, 120)
@@ -637,9 +697,7 @@ position = Vector2(-48, -156)
 texture = ExtResource("23")
 
 [node name="Enviroment" type="ParallaxBackground" parent="CanvasLayer"]
-layer = -80
-offset = Vector2(64, 64)
-transform = Transform2D(1, 0, 0, 1, 64, 64)
+scroll_base_scale = Vector2(1, -1)
 script = ExtResource("21")
 
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer/Enviroment"]
@@ -659,25 +717,21 @@ stretch_mode = 2
 
 [node name="back" type="ParallaxLayer" parent="CanvasLayer/Enviroment"]
 motion_scale = Vector2(0.1, 0.1)
-motion_offset = Vector2(0, -90)
-motion_mirroring = Vector2(640, 0)
+motion_offset = Vector2(2.08165e-12, 30)
+motion_mirroring = Vector2(320, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Enviroment/back"]
 texture = ExtResource("22")
 centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 640, 180)
 
 [node name="front" type="ParallaxLayer" parent="CanvasLayer/Enviroment"]
-motion_scale = Vector2(0.3, 0.3)
-motion_offset = Vector2(0, -90)
-motion_mirroring = Vector2(640, 0)
+motion_scale = Vector2(0.5, 0.75)
+motion_offset = Vector2(2.08165e-12, 30)
+motion_mirroring = Vector2(320, 2.08165e-12)
 
 [node name="Sprite2D" type="Sprite2D" parent="CanvasLayer/Enviroment/front"]
 texture = ExtResource("20")
 centered = false
-region_enabled = true
-region_rect = Rect2(0, 0, 640, 180)
 
 [node name="Hotbar" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -700,11 +754,11 @@ texture_normal = SubResource("2")
 [node name="Amount" type="Label" parent="CanvasLayer/Hotbar/InventoryBtn"]
 layout_mode = 0
 offset_left = 14.0
-offset_top = 3.0
+offset_top = 4.0
 offset_right = 49.0
-offset_bottom = 15.0
+offset_bottom = 13.0
 theme_override_colors/font_color = Color(0.854902, 0.878431, 0.917647, 1)
-theme_override_fonts/font = ExtResource("10")
+theme_override_fonts/font = ExtResource("13_rdlhm")
 text = "*123"
 clip_text = true
 
@@ -1040,12 +1094,13 @@ texture_normal = SubResource("10")
 
 [node name="Label" type="Label" parent="CanvasLayer/Pause/VBoxContainer/Quit"]
 layout_mode = 0
-offset_top = 4.0
+offset_top = 3.0
 offset_right = 64.0
 offset_bottom = 15.0
 theme = ExtResource("15")
-theme_override_fonts/font = ExtResource("10")
 text = "QUIT"
+label_settings = SubResource("LabelSettings_i4gvx")
+horizontal_alignment = 1
 
 [node name="Save" type="TextureButton" parent="CanvasLayer/Pause/VBoxContainer"]
 layout_mode = 2
@@ -1054,12 +1109,14 @@ texture_normal = SubResource("10")
 [node name="Label" type="Label" parent="CanvasLayer/Pause/VBoxContainer/Save"]
 layout_mode = 0
 offset_left = 1.0
-offset_top = 4.0
+offset_top = 3.0
 offset_right = 63.0
-offset_bottom = 12.0
+offset_bottom = 13.0
 theme = ExtResource("15")
-theme_override_fonts/font = ExtResource("10")
+theme_override_fonts/font = SubResource("FontFile_dj2i7")
 text = "SAVE"
+label_settings = SubResource("LabelSettings_pwli7")
+horizontal_alignment = 1
 
 [node name="Continue" type="TextureButton" parent="CanvasLayer/Pause/VBoxContainer"]
 layout_mode = 2
@@ -1068,12 +1125,14 @@ texture_normal = SubResource("10")
 [node name="Label" type="Label" parent="CanvasLayer/Pause/VBoxContainer/Continue"]
 layout_mode = 0
 offset_left = 1.0
-offset_top = 4.0
+offset_top = 3.0
 offset_right = 63.0
-offset_bottom = 12.0
+offset_bottom = 13.0
 theme = ExtResource("15")
-theme_override_fonts/font = ExtResource("10")
+theme_override_fonts/font = SubResource("FontFile_dj2i7")
 text = "CONTINUE"
+label_settings = SubResource("LabelSettings_v8tou")
+horizontal_alignment = 1
 
 [node name="Black" type="TextureRect" parent="CanvasLayer"]
 modulate = Color(0, 0, 0, 1)
@@ -1107,12 +1166,17 @@ texture = ExtResource("13")
 expand_mode = 1
 
 [node name="youDed" type="Label" parent="CanvasLayer/Dead"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 10
 anchor_right = 1.0
+offset_top = 4.0
 offset_bottom = 30.0
+grow_horizontal = 2
 theme_override_colors/font_shadow_color = Color(0.415686, 0.415686, 0.415686, 1)
-theme_override_fonts/font = ExtResource("50")
+theme_override_fonts/font = SubResource("FontFile_5lt0k")
 text = "You Died!"
+label_settings = SubResource("LabelSettings_1qgfe")
+horizontal_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/Dead"]
 layout_mode = 0
@@ -1131,40 +1195,54 @@ layout_mode = 2
 texture_normal = SubResource("10")
 
 [node name="Label" type="Label" parent="CanvasLayer/Dead/VBoxContainer/Respawn"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0.415686, 0.415686, 0.415686, 1)
-theme_override_fonts/font = ExtResource("10")
+theme_override_fonts/font = SubResource("FontFile_dj2i7")
 text = "Respawn"
+label_settings = SubResource("LabelSettings_q6nam")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="Quit" type="TextureButton" parent="CanvasLayer/Dead/VBoxContainer"]
 layout_mode = 2
 texture_normal = SubResource("10")
 
 [node name="Label" type="Label" parent="CanvasLayer/Dead/VBoxContainer/Quit"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_bottom = -2.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_colors/font_shadow_color = Color(0.415686, 0.415686, 0.415686, 1)
-theme_override_fonts/font = ExtResource("10")
+theme_override_fonts/font = SubResource("FontFile_dj2i7")
 text = "Quit"
+label_settings = SubResource("LabelSettings_fu1dw")
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="FPS" type="Label" parent="CanvasLayer"]
-visible = false
 offset_right = 40.0
 offset_bottom = 14.0
+label_settings = SubResource("LabelSettings_to2gn")
 
 [node name="Label" type="Label" parent="CanvasLayer"]
-visible = false
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_top = -8.0
 theme_override_colors/font_shadow_color = Color(0.415686, 0.415686, 0.415686, 1)
-theme_override_fonts/font = ExtResource("10")
-text = "TU 2 beta 5 (Unstable)"
+text = "TU3 beta 3 GODOT 4 test (Unstable)"
+label_settings = SubResource("LabelSettings_mi6vg")
+horizontal_alignment = 1
 
 [node name="Notification" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -1292,7 +1370,6 @@ script = ExtResource("47")
 [connection signal="pressed" from="CanvasLayer/Dead/VBoxContainer/Quit" to="CanvasLayer/Dead" method="_on_Quit_pressed"]
 [connection signal="world_loaded" from="World" to="." method="_on_World_world_loaded"]
 [connection signal="world_loaded" from="World" to="CanvasLayer/ParallaxBackground/Space" method="_on_World_world_loaded"]
-[connection signal="world_loaded" from="World" to="CanvasLayer/Enviroment" method="_on_World_world_loaded"]
 [connection signal="world_loaded" from="World" to="Entities" method="_on_World_world_loaded"]
 [connection signal="body_entered" from="Cursor/playerTest" to="Cursor" method="_on_playerTest_body_entered"]
 [connection signal="body_exited" from="Cursor/playerTest" to="Cursor" method="_on_playerTest_body_exited"]
