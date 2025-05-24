@@ -76,3 +76,6 @@ This branch is for unstable development of TU6 (v0.6.0)
 - Added platforms and fences for all wood variants
 - Added smooth stone and mud stone platforms
 - Bookmarks now show up in the system naviagation, and will help you locate bookmarked planets
+## TU6.5
+- Added crafting recipes for TU6.1 blocks
+- Added crafting recipes for scorched and permafrost blocks

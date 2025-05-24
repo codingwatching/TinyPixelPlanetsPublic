@@ -84,12 +84,26 @@ var recipes = {
 		{"recipe":[{"id":13,"amount":4},{"id":247,"amount":2}],"result":{"id":263,"amount":1}}, #Wool work table
 		{"recipe":[{"id":78,"amount":4}],"result":{"id":12,"amount":1}}, #Workbench (With exotic wood)
 		{"recipe":[{"id":5,"amount":1},{"id":323,"amount":1}],"result":{"id":321,"amount":4}}, #Torch
-		{"recipe":[{"id":13,"amount":2}],"result":{"id":30,"amount":4}},
+		{"recipe":[{"id":13,"amount":2}],"result":{"id":30,"amount":4}}, #Wood platform
+		{"recipe":[{"id":157,"amount":2}],"result":{"id":329,"amount":4}}, #Acacia platform
+		{"recipe":[{"id":78,"amount":2}],"result":{"id":330,"amount":4}}, #Exotic platform
+		{"recipe":[{"id":300,"amount":2}],"result":{"id":331,"amount":4}}, #Willow platform
+		{"recipe":[{"id":280,"amount":2}],"result":{"id":332,"amount":4}}, #Smooth stone platform
+		{"recipe":[{"id":19,"amount":2}],"result":{"id":333,"amount":4}}, #Mud stone platform
+		{"recipe":[{"id":180,"amount":2}],"result":{"id":188,"amount":4}}, #Scorched platform
+		{"recipe":[{"id":201,"amount":2}],"result":{"id":204,"amount":4}}, #Permafrost platform
+		{"recipe":[{"id":13,"amount":4}],"result":{"id":334,"amount":4}}, #Wood fence
+		{"recipe":[{"id":300,"amount":4}],"result":{"id":335,"amount":4}}, #Willow fence
+		{"recipe":[{"id":157,"amount":4}],"result":{"id":336,"amount":4}}, #Acacia fence
+		{"recipe":[{"id":180,"amount":4}],"result":{"id":183,"amount":4}}, #Scorched bricks fence
+		{"recipe":[{"id":201,"amount":4}],"result":{"id":203,"amount":4}}, #Permafrost bricks fence
 		{"recipe":[{"id":8,"amount":4}],"result":{"id":16,"amount":1}},
-		{"recipe":[{"id":17,"amount":4}],"result":{"id":19,"amount":4}},
+		{"recipe":[{"id":17,"amount":4}],"result":{"id":19,"amount":4}}, #Mud stone bricks
 		{"recipe":[{"id":3,"amount":4}],"result":{"id":15,"amount":4}}, #Stone bricks
 		{"recipe":[{"id":280,"amount":4}],"result":{"id":282,"amount":4}}, #Smooth stone bricks
 		{"recipe":[{"id":282,"amount":4}],"result":{"id":281,"amount":4}}, #Carved Smooth stone bricks
+		{"recipe":[{"id":177,"amount":4}],"result":{"id":180,"amount":4}}, #Scorched bricks
+		{"recipe":[{"id":197,"amount":4}],"result":{"id":201,"amount":4}}, #Permafrost bricks
 		{"recipe":[{"id":112,"amount":4}],"result":{"id":277,"amount":4}}, #Asteroid rock bricks
 		{"recipe":[{"id":112,"amount":2}],"result":{"id":278,"amount":2}}, #Carved asteroid rock
 		{"recipe":[{"id":112,"amount":1}],"result":{"id":279,"amount":1}}, #Polished asteroid rock
@@ -108,7 +122,6 @@ var recipes = {
 		{"recipe":[{"id":13,"amount":1},{"id":20,"amount":2}],"result":{"id":80,"amount":2}}, #Wood window
 		{"recipe":[{"id":52,"amount":1},{"id":20,"amount":2}],"result":{"id":81,"amount":2}}, #Copper wood window
 		{"recipe":[{"id":5,"amount":2},{"id":13,"amount":4}],"result":{"id":58,"amount":1}}, #Wood club
-		#{"recipe":[{"id":5,"amount":2},{"id":13,"amount":4}],"result":{"id":59,"amount":1}}, #Wood axe
 		{"recipe":[{"id":5,"amount":2},{"id":13,"amount":3}],"result":{"id":61,"amount":1}}, #Wood sword
 		{"recipe":[{"id":58,"amount":1},{"id":8,"amount":3}],"result":{"id":62,"amount":1}}, #Barbed club
 		{"recipe":[{"id":5,"amount":2},{"id":78,"amount":4}],"result":{"id":94,"amount":1}}, #Exotic wood club
