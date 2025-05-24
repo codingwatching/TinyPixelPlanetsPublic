@@ -880,5 +880,10 @@
 	"texture":"items/coal.png",
 	"type":"Item",
 	"name":"Coal"
+},
+"337":{
+	"texture":"items/wire_tool.png",
+	"type":"wire_tool",
+	"name":"coal"
 }
 }

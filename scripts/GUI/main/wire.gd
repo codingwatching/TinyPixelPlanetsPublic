@@ -21,23 +21,22 @@ var colors : Dictionary = {
 	"maroon":Color("73172d")
 }
 
+var selectedColor : String = "red"
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	for color : String in colors:
+	for color : String in colors: #Adds color buttons through code, to save on game file size
 		var colorBtn : TextureButton = TextureButton.new()
 		colorBtn.texture_normal = load("res://textures/GUI/space/buttons/color_btn.png")
 		colorBtn.size = Vector2(6,6)
+		colorBtn.name = color
 		colorBtn.pressed.connect(color_btn_pressed.bind(color))
+		$ColorPanel/ColorGrid.add_child(colorBtn)
+	color_btn_pressed("red")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-
-func 
-
-func _on_color_btn_toggled(toggled_on: bool) -> void:
-	color_panel.visible = toggled_on
-
+func color_btn_pressed(color : String) -> void:
+	selectedColor = color
+	$ColorPanel/ColorSelect.position = $ColorPanel/ColorGrid.get_node(color).position + Vector2(2,2)
 
 func _on_pick_color_btn_toggled(toggled_on: bool) -> void:
-	pass # Replace with function body.
+	color_panel.visible = toggled_on

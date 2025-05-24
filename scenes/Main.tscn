@@ -1,4 +1,4 @@
-[gd_scene load_steps=292 format=3 uid="uid://2c07adgn0vow"]
+[gd_scene load_steps=298 format=3 uid="uid://2c07adgn0vow"]
 
 [ext_resource type="Script" path="res://scripts/World.gd" id="1"]
 [ext_resource type="Shader" path="res://shaders/global_light_test.gdshader" id="1_4wm78"]
@@ -131,10 +131,16 @@
 [ext_resource type="Texture2D" uid="uid://5ly0wt3gm6kx" path="res://textures/GUI/main/cooking_pot/item_slot.png" id="94_aqewn"]
 [ext_resource type="Texture2D" uid="uid://cjri1af54g2lg" path="res://textures/GUI/main/cooking_pot/item_slot_hover.png" id="95_e65pb"]
 [ext_resource type="Texture2D" uid="uid://bs0xwn0tmjmrr" path="res://textures/GUI/main/cooking_pot/fuel_bar_back.png" id="96_2n770"]
+[ext_resource type="Script" path="res://scripts/GUI/main/wire.gd" id="96_w0c4p"]
 [ext_resource type="Texture2D" uid="uid://defuq7eucgutg" path="res://textures/GUI/main/cooking_pot/fuel_bar_front.png" id="97_x8fcp"]
+[ext_resource type="Texture2D" uid="uid://ck7ixiofe5jer" path="res://textures/GUI/main/wire/color_btn.png" id="97_y0wnh"]
+[ext_resource type="Texture2D" uid="uid://cxcro1wv5pmnd" path="res://textures/GUI/main/wire/color_btn_pressed.png" id="98_jnbp4"]
 [ext_resource type="Texture2D" uid="uid://0kw3pswgl7ra" path="res://textures/GUI/main/effects/no_oxygen.png" id="98_obupc"]
+[ext_resource type="Texture2D" uid="uid://dy8y1llusgvug" path="res://textures/GUI/main/wire/color_btn_hover.png" id="99_1gecg"]
 [ext_resource type="Texture2D" uid="uid://jubrgfwjnpsj" path="res://textures/GUI/main/effects/fire.png" id="99_nicjf"]
+[ext_resource type="Texture2D" uid="uid://ynsllokyhap" path="res://textures/GUI/main/wire/color_panel.png" id="100_lvlyp"]
 [ext_resource type="Texture2D" uid="uid://bh35fik5wk5y4" path="res://textures/GUI/main/effects/frozen.png" id="100_xdqdj"]
+[ext_resource type="Texture2D" uid="uid://dnddcwecucm7j" path="res://textures/GUI/main/wire/color_select.png" id="101_dixg3"]
 [ext_resource type="Script" path="res://scripts/GUI/main/slider_pop_up.gd" id="104_kln4w"]
 [ext_resource type="Script" path="res://scripts/GUI/main/teleport_prompt.gd" id="105_ry0l8"]
 [ext_resource type="FastNoiseLite" uid="uid://c5g6yqr51sbl6" path="res://noise/Cave.tres" id="110_3l8vn"]
@@ -4905,6 +4911,76 @@ grow_horizontal = 2
 text = "Fuel"
 horizontal_alignment = 1
 
+[node name="Wire" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("96_w0c4p")
+
+[node name="PickColorBtn" type="TextureButton" parent="CanvasLayer/Wire"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -16.0
+offset_top = -16.0
+offset_right = -2.0
+offset_bottom = -2.0
+grow_horizontal = 0
+grow_vertical = 0
+toggle_mode = true
+texture_normal = ExtResource("97_y0wnh")
+texture_pressed = ExtResource("98_jnbp4")
+texture_hover = ExtResource("99_1gecg")
+
+[node name="ColorPanel" type="NinePatchRect" parent="CanvasLayer/Wire"]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -38.0
+offset_top = -52.0
+offset_right = -2.0
+offset_bottom = -16.0
+grow_horizontal = 0
+grow_vertical = 0
+texture = ExtResource("100_lvlyp")
+patch_margin_left = 3
+patch_margin_top = 3
+patch_margin_right = 3
+patch_margin_bottom = 3
+
+[node name="ColorGrid" type="GridContainer" parent="CanvasLayer/Wire/ColorPanel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 3.0
+offset_top = 3.0
+offset_right = -3.0
+offset_bottom = -3.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/h_separation = 2
+theme_override_constants/v_separation = 2
+columns = 4
+
+[node name="ColorSelect" type="TextureRect" parent="CanvasLayer/Wire/ColorPanel"]
+layout_mode = 0
+offset_left = 2.0
+offset_top = 2.0
+offset_right = 10.0
+offset_bottom = 10.0
+texture = ExtResource("101_dixg3")
+stretch_mode = 3
+
 [node name="SignEdit" type="Panel" parent="CanvasLayer"]
 visible = false
 custom_minimum_size = Vector2(180, 110)
@@ -5869,6 +5945,7 @@ size = Vector2i(284, 160)
 [connection signal="pressed" from="CanvasLayer/MusicPlayer/MusicChipSlot" to="CanvasLayer/MusicPlayer" method="_on_music_chip_slot_pressed"]
 [connection signal="pressed" from="CanvasLayer/CookingPot/CookBtn" to="CanvasLayer/CookingPot" method="_on_cook_btn_pressed"]
 [connection signal="pressed" from="CanvasLayer/CookingPot/Bottom/FuelSlot" to="CanvasLayer/CookingPot" method="_on_fuel_slot_pressed"]
+[connection signal="toggled" from="CanvasLayer/Wire/PickColorBtn" to="CanvasLayer/Wire" method="_on_pick_color_btn_toggled"]
 [connection signal="text_changed" from="CanvasLayer/SignEdit/TextEdit" to="CanvasLayer/SignEdit" method="_on_text_edit_text_changed"]
 [connection signal="pressed" from="CanvasLayer/SignEdit/HBoxContainer/ModeBtn" to="CanvasLayer/SignEdit" method="_on_mode_btn_pressed"]
 [connection signal="value_changed" from="CanvasLayer/SignEdit/HBoxContainer/RadiusInt" to="CanvasLayer/SignEdit" method="_on_radius_int_value_changed"]
